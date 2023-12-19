@@ -17,12 +17,13 @@ type server struct {
 
 // GreetingResponse implementa SayHello
 func (s *server) SayHello(ctx context.Context, in *pb.GreetingRequest) (*pb.GreetingResponse, error) {
-	return &pb.GreetingResponse{Result: "Hello, " + in.GetData()}, nil
+	log.Printf("Received message body from client: %s", in.Data)
+	return &pb.GreetingResponse{Result: "Greeting from the server!"}, nil
 }
 
 func main() {
 	println("Starting new gRPC server...")
-	
+
 	lis, err := net.Listen("tcp", ":50051")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)

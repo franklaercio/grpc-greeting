@@ -22,7 +22,7 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
-	r, err := c.SayHello(ctx, &pb.GreetingRequest{Data: "world"})
+	r, err := c.SayHello(ctx, &pb.GreetingRequest{Data: "Hello from the client!"})
 	if err != nil {
 		log.Fatalf("could not greet: %v", err)
 	}
